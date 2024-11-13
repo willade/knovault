@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Knovault{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if request.endpoint not in ['main.login', 'main.register'] %}
+    <header>
+        <!-- Logo as an image -->
+        <a href="{{ url_for('main.home') }}" class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Knovault Logo" height="40">
+        </a>
+
+        <!-- Navigation, search, profile icons aligned right -->
+        <div class="header-right">
+            <nav>
+                <a href="{{ url_for('main.home') }}">Home</a>
+                <a href="{{ url_for('main.view_lessons') }}">Lessons</a>
+                <a href="{{ url_for('main.submit_lesson') }}">Submit Lesson</a>
+                <a href="{{ url_for('main.analytics') }}">Analytics</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <!-- Profile Icon in Header -->
+        <div class="profile">
+                 <a href="{{ url_for('main.profile') }}">
+                 <img src="{{ url_for('static', filename='profile-icon.png') }}" alt="Profile Icon" class="profile-icon">
+                 </a>
+              {% if current_user.is_authenticated %}
+                 <a href="{{ url_for('main.logout') }}" class="logout">Logout</a>
+              {% else %}
+                 <a href="{{ url_for('main.login') }}">Login</a>
+              {% endif %}
+        </div>
+        </div>
+    </header>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+        <!-- Optional Chatbot or Quick Access Button -->
+    <div class="chatbot-button">
+        <button>Chat with Us</button>
+    </div>
+    </main>
+    {% if request.endpoint not in ['main.login', 'main.register'] %}
+    <!-- Footer -->
+    <footer>
+         Copyright &copy; 2024 KnoVault. All rights reserved 
+    </footer>
+    {% endif %}
+</body>
+</html>

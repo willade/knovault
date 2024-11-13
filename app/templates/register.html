@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Knovault{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <!-- Left Section: Information with Logo -->
+    <div class="register-info">
+        <!-- Company Logo at the top -->
+        <img src="{{ url_for('static', filename='logow.png') }}" alt="Company Logo" class="company-logo">
+        
+        <h2>Welcome</h2>
+        <p>Get started with your account today.</p>
+        <p>Manage and document lessons learned from your projects effectively.</p>
+        <a href="{{ url_for('main.login') }}" class="login-link">Have an Account? Log In</a>
+    </div>
+    
+    <!-- Right Section: Register Form -->
+    <div class="register-form">
+        <h2>Register Form</h2>
+        
+        <form action="{{ url_for('main.register') }}" method="POST">
+            {{ form.hidden_tag() }}
+        
+            <label for="full_name">Full Name</label>
+            {{ form.full_name }}
+        
+            <label for="username">Username</label>
+            {{ form.username }}
+        
+            <label for="email">Email</label>
+            {{ form.email }}
+        
+            <label for="project_role">Project Role</label>
+            {{ form.project_role }}
+        
+            <label for="password">Password</label>
+            {{ form.password }}
+        
+            <label for="confirm_password">Confirm Password</label>
+            {{ form.confirm_password }}
+        
+            <div class="terms_accepted">
+                {{ form.terms_accepted }} 
+                <label for="terms_accepted">I agree to the <a href="#">Terms and Conditions</a></label>
+            </div>
+        
+            {{ form.submit(class="register-button") }}
+        </form>
+    </div>
+</div>
+{% endblock %}

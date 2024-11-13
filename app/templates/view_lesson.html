@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+
+    {% block title %}View Lesson - Knovault{% endblock %}
+    
+    {% block content %}
+    <div class="view-lesson-container">
+        
+        
+        <h2>Lesson Details</h2>
+        <div class="lesson-details">
+            <p><strong>Project Name:</strong> {{ lesson.project_name }}</p>
+            <p><strong>Project Description:</strong> {{ lesson.project_description }}</p>
+            <p><strong>Project Start Date:</strong> {{ lesson.project_start_date.strftime('%Y-%m-%d') }}</p>
+            <p><strong>Project End Date:</strong> {{ lesson.project_end_date.strftime('%Y-%m-%d') }}</p>
+            <p><strong>Project Status:</strong> {{ lesson.project_status }}</p>
+            <p><strong>Project Phase:</strong> {{ lesson.project_phase }}</p>
+            <p><strong>Issue Type:</strong> {{ lesson.issue_type }}</p>
+            <p><strong>Solution:</strong> {{ lesson.solution }}</p>
+            <p><strong>Recommendation:</strong> {{ lesson.recommendation }}</p>
+            <p><strong>Tags/Keywords:</strong> {{ lesson.tags }}</p>
+        </div>
+
+        <a href="{{ url_for('main.home') }}" class="back-button">← Back to Home</a>
+    </div>
+    {% endblock %}
+    
+</html>

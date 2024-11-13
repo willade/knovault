@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+
+/* Color scheme */
+:root {
+    --primary-color: #003135;
+    --secondary-color: #0fa4af;
+    --background-color: #ffffff;
+    --header-background-color: #f2f0ef;
+}
+
+/* General page styling */
+body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;   /*just added*/
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* Allows main content to grow and push footer to bottom */
+}
+
+/* Header styling */
+header {
+    background-color: var(--header-background-color); /* Updated header background color */
+    color: var(--primary-color);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo as an image */
+header .logo img {
+    height: 40px;
+    margin-right: auto; /* Pushes other elements to the right */
+}
+
+/* Right side alignment for nav, search bar, and profile */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header .search-bar input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+header .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .profile img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+header .logout {
+    font-weight: bold;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+
+/* Login page layout */
+.login-container {
+    display: flex;
+    flex-direction: row; /* Ensures left-right alignment */
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Left Section: Image */
+.login-image {
+    flex: 1;
+    background-color: var(--secondary-color); /* Fallback color */
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Right Section: Form */
+.login-form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+/* Floating login card with rounded edges and shadow */
+.login-card {
+    width: 80%;
+    max-width: 350px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Floating shadow effect */
+    text-align: center;
+}
+
+.login-card h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.login-card p {
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+    font-size: 1rem;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card label {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.login-card input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-card .login-button {
+    margin-top: 1.5rem;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-card .login-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Container for the register page */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 40px; /* Extra space around the form */
+    height: 100vh;
+    background-color: #e0f7f9;
+    box-sizing: border-box;
+}
+
+/* Left Section: Information */
+.register-info {
+    flex: 1;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.register-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.register-info p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.register-info .login-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 10px 20px;
+    background-color: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Company Logo styling */
+.company-logo {
+    width: 150px; /* Adjust as needed */
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Right Section: Register Form */
+.register-form {
+    flex: 1;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limit form width */
+    box-sizing: border-box;
+}
+
+.register-form h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.register-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form label {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+.register-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.register-form .terms {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-form .terms label {
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+}
+
+.register-form .terms a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.register-form .terms a:hover {
+    text-decoration: underline;
+}
+
+.register-form .register-button {
+    margin-top: 1.5rem;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form .register-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .register-container {
+        flex-direction: column; /* Stack sections vertically */
+        padding: 20px;
+    }
+
+    .register-info, .register-form {
+        max-width: 100%;
+        border-radius: 10px; /* Rounded edges for both sections */
+    }
+
+    .register-info {
+        border-radius: 10px 10px 0 0; /* Round top corners */
+    }
+
+    .register-form {
+        border-radius: 0 0 10px 10px; /* Round bottom corners */
+        box-shadow: none; /* Remove shadow for a clean stack */
+    }
+}
+
+/* Home Page Container */
+.home-container {
+    padding: 2rem;
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+/* Recent Lessons Section */
+.recent-lessons {
+    margin-top: 2rem;
+}
+
+.recent-lessons h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.lessons-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.lesson-card {
+    background-color: #f2f0ef;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-card h3 {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.lesson-card p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.lesson-card .view-details {
+    display: inline-block;
+    margin-top: 1rem;
+    color: white;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.lesson-card .view-details:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Power BI Visuals Section */
+.powerbi-visuals {
+    margin-top: 2rem;
+}
+
+.powerbi-visuals h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.visuals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.visuals-grid iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatbot Button */
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chatbot-button button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-button button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Submit Lesson Page Container */
+.submit-lesson-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2rem;
+    padding-bottom: 4rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+}
+
+.submit-lesson-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+.lesson-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.lesson-form label {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.lesson-form input[type="text"],
+.lesson-form select,
+.lesson-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.lesson-form input[type="text"]:focus,
+.lesson-form select:focus,
+.lesson-form textarea:focus {
+    border-color: var(--secondary-color);
+}
+
+.lesson-form textarea {
+    resize: vertical;
+}
+
+.lesson-form .submit-button {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lesson-form .submit-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* View Lesson Page Container */
+.view-lesson-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+}
+
+.view-lesson-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Lesson Details */
+.lesson-details {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.lesson-details p {
+    margin: 0.75rem 0;
+    color: var(--primary-color);
+}
+
+.lesson-details p strong {
+    color: var(--secondary-color);
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Container for the View Lessons Page */
+.view-lessons-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.view-lessons-container h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Grid Layout for Lessons */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Individual Lesson Card Styling */
+.lesson-card {
+    background-color: #f2f0ef;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.2s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+}
+
+.lesson-card h3 {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.lesson-card p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+}
+
+/* View Details Button */
+.view-details-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+    background-color: var(--primary-color);
+}

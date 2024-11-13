@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Knovault{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <!-- Left Section: Image -->
+    <div class="login-image">
+        <img src="{{ url_for('static', filename='login-image.jpg') }}" alt="Welcome to Knovault">
+    </div>
+    
+    <!-- Right Section: Floating Login Form -->
+    <div class="login-form">
+        <div class="login-card">
+            <h1>Welcome Back!</h1>
+            <p>Please log in to continue</p>
+            
+            <form action="{{ url_for('main.login') }}" method="POST">
+                {{ form.hidden_tag() }}  <!-- CSRF token -->
+            
+                <label for="username">Username</label>
+                {{ form.username }}  <!-- Render username field from the form -->
+            
+                <label for="password">Password</label>
+                {{ form.password }}  <!-- Render password field from the form -->
+            
+                <button type="submit" class="login-button">Log In</button>
+            </form>
+            
+            {% if form.username.errors %}
+                <p class="error">{{ form.username.errors[0] }}</p>
+            {% endif %}
+            {% if form.password.errors %}
+                <p class="error">{{ form.password.errors[0] }}</p>
+            {% endif %}
+
+            <!-- Register link -->
+            <p class="register-text">Don’t have an account? 
+                <a href="{{ url_for('main.register') }}" class="register-link">Register here</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

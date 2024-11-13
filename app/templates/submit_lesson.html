@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Lesson - Knovault{% endblock %}
+
+{% block content %}
+<div class="submit-lesson-container">
+    <h2>Submit a New Lesson</h2>
+    
+    <form action="{{ url_for('main.submit_lesson') }}" method="POST" class="lesson-form">
+        <!-- Project Information -->
+        <label for="project_name">Project Name</label>
+        <input type="text" id="project_name" name="project_name" required>
+
+        <label for="project_description">Project Description</label>
+        <textarea id="project_description" name="project_description"></textarea>
+
+        <label for="project_start_date">Project Start Date</label>
+        <input type="datetime-local" id="project_start_date" name="project_start_date">
+
+        <label for="project_end_date">Project End Date</label>
+        <input type="datetime-local" id="project_end_date" name="project_end_date">
+
+        <label for="project_status">Project Status</label>
+        <select id="project_status" name="project_status">
+            <option value="">Select Status</option>
+            {% for status in lesson.PROJECT_STATUSES %}
+                <option value="{{ status }}">{{ status }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Fixed Choices -->
+        <label for="project_phase">Project Phase</label>
+        <select id="project_phase" name="project_phase" required>
+            <option value="">Select Phase</option>
+            {% for phase in lesson.PROJECT_PHASES %}
+                <option value="{{ phase }}">{{ phase }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="issue_type">Issue Type</label>
+        <select id="issue_type" name="issue_type" required>
+            <option value="">Select Issue Type</option>
+            {% for issue in lesson.ISSUE_TYPES %}
+                <option value="{{ issue }}">{{ issue }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Solution and Recommendation -->
+        <label for="solution">Solution</label>
+        <textarea id="solution" name="solution" rows="4" required></textarea>
+
+        <label for="recommendation">Recommendation</label>
+        <textarea id="recommendation" name="recommendation" rows="4"></textarea>
+
+        <label for="tags">Tags/Keywords</label>
+        <input type="text" id="tags" name="tags" placeholder="e.g., communication, risk management">
+
+        <button type="submit" class="submit-button">Submit Lesson</button>
+    </form>
+</div>
+{% endblock %}

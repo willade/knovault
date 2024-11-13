@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends "base.html" %}
+
+    {% block title %}Home - Knovault{% endblock %}
+    
+    {% block content %}
+    <div class="home-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>Welcome to Knovault</h1>
+            <p>Your central hub for project lessons learned.</p>
+        </section>
+    
+        <!-- Recent Lessons Section -->
+        <section class="recent-lessons">
+            <h2>Recent Lessons</h2>
+            <div class="lessons-list">
+                {% for lesson in lessons %}
+                <div class="lesson-card">
+                    <h3>{{ lesson.project_name }}</h3>
+                    <p><strong>Issue Type:</strong> {{ lesson.issue_type }}</p>
+                    <p><strong>Project Phase:</strong> {{ lesson.project_phase }}</p>
+                    <a href="{{ url_for('main.view_lesson', lesson_id=lesson.id) }}" class="view-details">View Details</a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    
+        <!-- Power BI Visuals Section -->
+        <section class="powerbi-visuals">
+            <h2>Power BI Visuals</h2>
+            <div class="visuals-grid">
+                <iframe src="URL_FOR_MOST_FREQUENT_ISSUES" title="Most Frequent Issues"></iframe>
+                <iframe src="URL_FOR_PROJECT_PHASES" title="Project Phases with Most Lessons"></iframe>
+                <iframe src="URL_FOR_TOP_LESSONS" title="Top Lessons by Impact"></iframe>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Optional Chatbot or Quick Access Button -->
+    <div class="chatbot-button">
+        <button>Chat with Us</button>
+    </div>
+    {% endblock %}
+    
+</html>

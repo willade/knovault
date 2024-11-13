@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<h3>User Management</h3>
+<ul>
+    {% for user in users %}
+        <li>{{ user.username }} - {{ user.email }} - <a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Project Management</h3>
+<!-- List and manage projects here -->
+
+<h3>Lessons Management</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>{{ lesson.project_name }} - <a href="{{ url_for('main.view_lesson', lesson_id=lesson.id) }}">View</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
