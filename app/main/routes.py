@@ -55,7 +55,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(password=form.password.data):
             login_user(user)
-            return redirect(url_for('main.profile'))
+            return redirect(url_for('main.home'))
         flash('Invalid username or password.')
     return render_template('login.html', form=form)
 
