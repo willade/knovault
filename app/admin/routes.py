@@ -14,3 +14,11 @@ def admin_dashboard():
     users = User.query.all()
     lessons = Lesson.query.all()
     return render_template('admin.html', users=users, lessons=lessons)
+
+@admin.route('/delete_user/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    flash('User deleted successfully')
+    return redirect(url_for('admin.admin_dashboard'))
