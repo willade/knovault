@@ -12,7 +12,7 @@ login_manager.login_message = "Please log in to access this page."
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your_secret_key'
+    app.config['SECRET_KEY'] = 'uchechukwu'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lessons.db'
 
     # Bind extensions to the app
