@@ -58,10 +58,13 @@
     <!-- Main Content -->
     <main>
         {% block content %}{% endblock %}
-        <!-- Optional Chatbot or Quick Access Button -->
-    <div class="chatbot-button">
-        <button>Chat with Us</button>
-    </div>
+        
+        <!-- Chatbot button shown only on certain pages -->
+        {% if request.endpoint not in ['main.login', 'main.register'] %}
+        <div class="chatbot-button">
+            <button>Ask Zoe</button>
+        </div>
+        {% endif %}
     </main>
     {% if request.endpoint not in ['main.login', 'main.register'] %}
     <!-- Footer -->
