@@ -217,10 +217,14 @@ def search():
     ).all()
 
     # Optionally, search in User model
-    users = User.query.filter(
-        (User.username.ilike(f'%{query}%')) |
-        (User.full_name.ilike(f'%{query}%')) |
-        (User.email.ilike(f'%{query}%'))
-    ).all()
+    # users = User.query.filter(
+    #     (User.username.ilike(f'%{query}%')) |
+    #     (User.full_name.ilike(f'%{query}%')) |
+    #     (User.email.ilike(f'%{query}%'))
+    # ).all()
 
-    return render_template('search_results.html', query=query, lessons=lessons, users=users)
+    # If the user is not an admin, filter lessons further
+    # if not current_user.is_admin:
+    #     lessons = lessons.filter_by(user_id=current_user.id)
+    # return render_template('search_results.html', query=query, lessons=lessons, users=users)
+    return render_template('search_results.html', query=query, lessons=lessons)
