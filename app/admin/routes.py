@@ -22,3 +22,18 @@ def delete_user(user_id):
     db.session.commit()
     flash('User deleted successfully')
     return redirect(url_for('admin.admin_dashboard'))
+
+@admin.route('/delete_lesson/<int:lesson_id>', methods=['POST'])
+@login_required
+def delete_lesson(lesson_id):
+    # Ensure only admins can access this route
+    if not current_user.is_admin:
+        flash('You do not have permission to perform this action.')
+        return redirect(url_for('main.home'))
+    
+    # Retrieve the lesson and delete it if it exists
+    lesson = Lesson.query.get_or_404(lesson_id)
+    db.session.delete(lesson)
+    db.session.commit()
+    flash('Lesson deleted successfully.')
+    return redirect(url_for('admin.admin_dashboard'))  # Redirect to admin dashboard or another appropriate page
