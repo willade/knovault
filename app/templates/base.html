@@ -26,10 +26,21 @@
                     <a href="{{ url_for('admin.admin_dashboard') }}">Admin</a> <!-- Admin link only for admins -->
                 {% endif %}
             </nav>
+            <!-- <div class="search-bar">
+                <form action="{{ url_for('main.search') }}" method="GET">
+                    <input type="text" name="q" placeholder="Search..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </div> -->
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
+                <form action="{{ url_for('main.search') }}" method="GET">
+                    <input type="text" name="q" placeholder="Search..." required>
+                    <button type="submit">
+                        <img src="{{ url_for('static', filename='search-icon.png') }}" alt="Search" height="15">
+                    </button>
+                </form>
             </div>
-            <!-- Profile Icon in Header -->
+            
         <div class="profile">
                  <a href="{{ url_for('main.profile') }}">
                  <img src="{{ url_for('static', filename='profile-icon.png') }}" alt="Profile Icon" class="profile-icon">

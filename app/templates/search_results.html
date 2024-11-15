@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results - {{ super() }}{% endblock %}
+
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+
+{% if lessons %}
+    <h3>Lessons</h3>
+    <ul>
+        {% for lesson in lessons %}
+            <li>
+                <a href="{{ url_for('main.view_lesson', lesson_id=lesson.id) }}">{{ lesson.project_name }}</a>
+                - {{ lesson.issue_type }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No lessons found matching your search.</p>
+{% endif %}
+
+{% if users %}
+    <h3>Users</h3>
+    <ul>
+        {% for user in users %}
+            <li>
+                {{ user.username }} ({{ user.email }})
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No users found matching your search.</p>
+{% endif %}
+
+{% endblock %}

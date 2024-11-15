@@ -200,8 +200,27 @@ def delete_lesson(lesson_id):
     flash('Lesson deleted!')
     return redirect(url_for('main.profile'))
 
-# @main.route('/lesson/<int:lesson_id>', methods=['GET'])
-# @login_required
-# def view_lesson(lesson_id):
-#     lesson = Lesson.query.get_or_404(lesson_id)
-#     return render_template('view_lesson.html', lesson=lesson)
+@main.route('/search', methods=['GET'])
+@login_required
+def search():
+    query = request.args.get('q', '').strip()
+    if not query:
+        flash('Please enter a search term.')
+        return redirect(request.referrer or url_for('main.home'))
+
+    # Search in Lesson model (adjust the fields as needed)
+    lessons = Lesson.query.filter(
+        (Lesson.project_name.ilike(f'%{query}%')) |
+        (Lesson.issue_type.ilike(f'%{query}%')) |
+        (Lesson.tags.ilike(f'%{query}%')) |
+        (Lesson.project_description.ilike(f'%{query}%'))
+    ).all()
+
+    # Optionally, search in User model
+    users = User.query.filter(
+        (User.username.ilike(f'%{query}%')) |
+        (User.full_name.ilike(f'%{query}%')) |
+        (User.email.ilike(f'%{query}%'))
+    ).all()
+
+    return render_template('search_results.html', query=query, lessons=lessons, users=users)
