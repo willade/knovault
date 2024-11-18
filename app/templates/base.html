@@ -13,7 +13,12 @@
         <a href="{{ url_for('main.home') }}" class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Knovault Logo" height="40">
         </a>
-
+        <!-- Hamburger Menu -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <!-- Navigation, search, profile icons aligned right -->
         <div class="header-right">
             <nav>
@@ -72,5 +77,11 @@
          Copyright &copy; 2024 KnoVault. All rights reserved 
     </footer>
     {% endif %}
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('header .header-right nav');
+            nav.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
