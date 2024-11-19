@@ -7,9 +7,53 @@
 
 {% block content %}
 </head>
-<body>
-    <h1>Analytics Dashboard</h1>
-    <p>Here is where the Power BI or other analytics data would be embedded.</p>
-</body>
+<h1>Project Analytics</h1>
+
+<div class="chart-container">
+    <h2>Most Common Issues</h2>
+    {{ issue_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Lessons Learned by Project Phase</h2>
+    {{ phase_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Issue Type Breakdown Over Time</h2>
+    {{ issue_trend_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Tag Usage Analysis</h2>
+    {{ tag_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Project Status Breakdown</h2>
+    {{ status_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Average Project Duration by Status</h2>
+    {{ avg_duration_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Top Recommendations</h2>
+    <img src="{{ recommendation_wordcloud }}" alt="Word Cloud">
+</div>
+
+<div class="chart-container">
+    <h2>Completion Trends Over Time</h2>
+    {{ completion_chart|safe }}
+</div>
+
+<div class="chart-container">
+    <h2>Lessons Learned vs. Project Duration</h2>
+    {{ scatter_chart|safe }}
+</div>
+
+
 {% endblock %}
 </html>

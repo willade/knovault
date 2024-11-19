@@ -27,13 +27,27 @@
             </div>
         </section>
     
-        <!-- Power BI Visuals Section -->
-        <section class="powerbi-visuals">
-            <h2>Power BI Visuals</h2>
+        <!-- Visuals Section -->
+        <section class="quick-analytics">
+            <h2>Quick Analytics</h2>
             <div class="visuals-grid">
-                <iframe src="URL_FOR_MOST_FREQUENT_ISSUES" title="Most Frequent Issues"></iframe>
-                <iframe src="URL_FOR_PROJECT_PHASES" title="Project Phases with Most Lessons"></iframe>
-                <iframe src="URL_FOR_TOP_LESSONS" title="Top Lessons by Impact"></iframe>
+                <!-- Most Common Issues -->
+                <div class="chart-container2">
+                    <h3>Most Common Issues</h3>
+                    {{ issue_chart|safe }}
+                </div>
+        
+                <!-- Lessons Learned by Project Phase -->
+                <div class="chart-container2">
+                    <h3>Lessons Learned by Project Phase</h3>
+                    {{ phase_chart|safe }}
+                </div>
+        
+                <!-- Tag Usage Analysis -->
+                <div class="chart-container2">
+                    <h3>Tag Usage Analysis</h3>
+                    {{ tag_chart|safe }}
+                </div>
             </div>
         </section>
     </div>

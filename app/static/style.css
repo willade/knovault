@@ -339,6 +339,13 @@ footer {
 
 /* Home Page Container */
 .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
     padding: 2rem;
     background-color: white;
     color: var(--primary-color);
@@ -347,12 +354,13 @@ footer {
 /* Welcome Section */
 .welcome-section {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 10px;
 }
 
 .welcome-section h1 {
     font-size: 2.5rem;
     font-weight: bold;
+    margin-bottom: 10px;
     color: var(--primary-color);
 }
 
@@ -363,37 +371,48 @@ footer {
 
 /* Recent Lessons Section */
 .recent-lessons {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .recent-lessons h2 {
     font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 .lessons-list {
+    /* display: flex;
+    flex-direction: column;
+    gap: 15px; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
 .lesson-card {
-    background-color: #f2f0ef;
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: left;
+    /* background-color: #f2f0ef;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 .lesson-card h3 {
     font-size: 1.4rem;
     color: var(--secondary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 10px;
 }
 
 .lesson-card p {
     font-size: 1rem;
-    margin: 0.5rem 0;
+    margin: 5px 0;
 }
 
 .lesson-card .view-details {
@@ -410,31 +429,35 @@ footer {
 
 .lesson-card .view-details:hover {
     background-color: var(--secondary-color);
+    text-decoration: underline;
 }
 
-/* Power BI Visuals Section */
-.powerbi-visuals {
-    margin-top: 2rem;
+/* Style the quick analytics section */
+.quick-analytics {
+    width: 100%;
+    max-width: 1200px;
 }
 
-.powerbi-visuals h2 {
+.quick-analytics h2 {
     font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 .visuals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.visuals-grid iframe {
-    width: 100%;
-    height: 200px;
-    border: none;
+.chart-container2 {
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
 /* Chatbot Button */
@@ -665,7 +688,7 @@ footer {
         background-color: var(--header-background-color);
         position: absolute;
         top: 60px;
-        right: 20px;
+        left: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         z-index: 1000;
@@ -715,4 +738,81 @@ footer {
     footer {
         font-size: 0.8rem;
     }
+}
+
+.chart-container {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.chart-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #003135; /* Primary color */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0fa4af;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #003135;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.user-table thead th {
+    background-color: #003135;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.user-table tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.user-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
 }

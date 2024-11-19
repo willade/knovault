@@ -4,6 +4,8 @@ from app import db
 from app.models import User, Lesson
 from app.forms import LoginForm, RegistrationForm, ProfileForm
 from datetime import datetime
+from app.analytics import get_most_common_issues, get_trends_by_phases, generate_issue_trend_chart, generate_phase_insights_chart, generate_tag_usage_chart, generate_project_status_chart, generate_avg_duration_chart, generate_recommendation_wordcloud, generate_completion_trend_chart, generate_lessons_vs_duration_chart
+import plotly.express as px
 
 main = Blueprint('main', __name__)
 
@@ -95,7 +97,18 @@ def profile():
 @login_required
 def home():
     lessons = Lesson.query.order_by(Lesson.id.desc()).limit(5).all()
-    return render_template('home.html', lessons=lessons)
+    # Generate charts
+    issue_chart = generate_issue_trend_chart()  # If using a bar chart
+    phase_chart = generate_phase_insights_chart()
+    tag_chart = generate_tag_usage_chart()
+
+    return render_template(
+        'home.html',
+        lessons=lessons,
+        issue_chart=issue_chart,
+        phase_chart=phase_chart,
+        tag_chart=tag_chart
+    )
 
 
 @main.route('/change_password', methods=['POST'])
@@ -164,11 +177,11 @@ def view_lessons():
     return render_template('view_lessons.html', lessons=lessons)
 
 
-@main.route('/analytics')
-@login_required
-def analytics():
-    # Render a template for the analytics page
-    return render_template('analytics.html')
+# @main.route('/analytics')
+# @login_required
+# def analytics():
+#     # Render a template for the analytics page
+#     return render_template('analytics.html')
 
 @main.route('/lesson/<int:lesson_id>', methods=['GET'])
 @login_required
@@ -228,3 +241,49 @@ def search():
     #     lessons = lessons.filter_by(user_id=current_user.id)
     # return render_template('search_results.html', query=query, lessons=lessons, users=users)
     return render_template('search_results.html', query=query, lessons=lessons)
+
+@main.route('/analytics', methods=['GET'])
+@login_required
+def analytics():
+    most_common_issues = get_most_common_issues()
+    trends_by_phases = get_trends_by_phases()
+    issue_trend_chart = generate_issue_trend_chart()
+    phase_chart = generate_phase_insights_chart()
+    tag_chart = generate_tag_usage_chart()
+    status_chart = generate_project_status_chart()
+    avg_duration_chart = generate_avg_duration_chart()
+    recommendation_wordcloud = generate_recommendation_wordcloud()
+    completion_chart = generate_completion_trend_chart()
+    scatter_chart = generate_lessons_vs_duration_chart()
+
+    issue_data = {
+        "issue_types": [issue[0] for issue in most_common_issues],
+        "counts": [issue[1] for issue in most_common_issues],
+    }
+    phase_data = {
+        "phases": [phase[0] for phase in trends_by_phases],
+        "counts": [phase[1] for phase in trends_by_phases],
+    }
+
+    issue_chart = px.bar(
+        x=issue_data["issue_types"], y=issue_data["counts"], 
+        title="Most Common Issues", labels={"x": "Issue Type", "y": "Count"}
+    ).to_html(full_html=False)
+
+    phase_chart = px.pie(
+        names=phase_data["phases"], values=phase_data["counts"], 
+        title="Lessons Learned by Project Phase"
+    ).to_html(full_html=False)
+
+    return render_template(
+    'analytics.html',
+    issue_chart=issue_chart,
+    issue_trend_chart=issue_trend_chart,
+    phase_chart=phase_chart,
+    tag_chart=tag_chart,
+    status_chart=status_chart,
+    avg_duration_chart=avg_duration_chart,
+    recommendation_wordcloud=recommendation_wordcloud,
+    completion_chart=completion_chart,
+    scatter_chart=scatter_chart
+)

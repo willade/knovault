@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>User Analysis</h2>
+<div class="chart-container">
+    <h3>Lessons per User</h3>
+    {{ user_chart|safe }}
+</div>
+{% endblock %}
