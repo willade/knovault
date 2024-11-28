@@ -588,8 +588,8 @@ footer {
 }
 
 #bot-response-loader {
-    width: 40px;
-    height: 21px;
+    width: 35px;
+    height: 15px;
     aspect-ratio: 2;
     --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
     background: 
@@ -608,8 +608,8 @@ footer {
 
 
   #voice-record-loader {
-    width: 45px;
-    height: 21px;
+    width: 25px;
+    height: 15px;
     aspect-ratio: 1;
     --c: no-repeat linear-gradient(#000 0 0);
     background: 
