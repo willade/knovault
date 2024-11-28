@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
 from app.models import User, Lesson
@@ -287,3 +287,14 @@ def analytics():
     completion_chart=completion_chart,
     scatter_chart=scatter_chart
 )
+
+@main.route('/api/chatbot', methods=['POST'])
+def chatbot_api():
+    user_message = request.json.get('message')
+    if not user_message:
+        return jsonify({'response': 'Message cannot be empty.'}), 400
+
+    from app.chatbot import chatbot_response
+    return chatbot_response()
+
+

@@ -1,0 +1,45 @@
+version: "3.1"
+stories:
+
+- story: open a page
+  steps:
+  - intent: open_page
+  - action: action_open_page
+
+- story: submit a lesson
+  steps:
+  - intent: submit_lesson
+  - action: utter_ask_phase
+  - intent: provide_lesson_details
+  - action: utter_ask_issue
+  - intent: provide_lesson_details
+  - action: utter_ask_solution
+  - intent: provide_lesson_details
+  - action: utter_ask_recommendation
+  - intent: provide_lesson_details
+  - action: action_save_lesson
+
+- story: search for lessons
+  steps:
+    - intent: search_lesson
+    - action: utter_search_lesson
+
+- story: get recommendations
+  steps:
+    - intent: get_recommendations
+    - action: utter_get_recommendations
+
+- story: greet the user
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: say goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: fallback
+  steps:
+    - intent: fallback
+    - action: utter_default

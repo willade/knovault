@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-issue",
+      "2": "I-issue",
+      "3": "L-issue",
+      "4": "U-issue",
+      "5": "B-page_name",
+      "6": "I-page_name",
+      "7": "L-page_name",
+      "8": "U-page_name",
+      "9": "B-phase",
+      "10": "I-phase",
+      "11": "L-phase",
+      "12": "U-phase",
+      "13": "B-recommendation",
+      "14": "I-recommendation",
+      "15": "L-recommendation",
+      "16": "U-recommendation",
+      "17": "B-topic",
+      "18": "I-topic",
+      "19": "L-topic",
+      "20": "U-topic",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-issue": 1,
+      "I-issue": 2,
+      "L-issue": 3,
+      "U-issue": 4,
+      "B-page_name": 5,
+      "I-page_name": 6,
+      "L-page_name": 7,
+      "U-page_name": 8,
+      "B-phase": 9,
+      "I-phase": 10,
+      "L-phase": 11,
+      "U-phase": 12,
+      "B-recommendation": 13,
+      "I-recommendation": 14,
+      "L-recommendation": 15,
+      "U-recommendation": 16,
+      "B-topic": 17,
+      "I-topic": 18,
+      "L-topic": 19,
+      "U-topic": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

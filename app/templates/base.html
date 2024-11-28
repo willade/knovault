@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Knovault{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </head>
 <body>
     {% if request.endpoint not in ['main.login', 'main.register'] %}
@@ -66,9 +67,18 @@
         
         <!-- Chatbot button shown only on certain pages -->
         {% if request.endpoint not in ['main.login', 'main.register'] %}
-        <div class="chatbot-button">
-            <button>Ask Zoe</button>
-        </div>
+        <!-- Chatbot Button -->
+        <div id="chatbot">
+            <img id="chatbot-toggle" src="{{ url_for('static', filename='chat-icon.png') }}" alt="Chatbot" />
+            <!-- Chatbot Panel -->
+            <div id="chat-window" class="hidden">
+                <div id="chat-log"></div>
+                <input id="chat-input" type="text" placeholder="Hi, i'm zoe... how can i help..." />
+                <button id="chat-send">Send</button>
+                <button id="voice-command-btn">🎤</button>
+            </div>
+        </div>        
+        
         {% endif %}
     </main>
     {% if request.endpoint not in ['main.login', 'main.register'] %}

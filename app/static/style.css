@@ -461,27 +461,192 @@ footer {
 }
 
 /* Chatbot Button */
-.chatbot-button {
+#chatbot {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
 }
 
-.chatbot-button button {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
+/* #chatbot-toggle {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-image: url('/static/chatbot-icon.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+} */
+
+#chatbot-toggle {
+    display: block;
+    width: 110px;
+    height: 90px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+
+#chat-window {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    width: 350px;
+    max-height: 500px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* #chat-window {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+#chat-window.hidden {
+    display: none;
+}
+
+#chat-log {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+.user-message {
+    text-align: right;
+    margin: 5px;
+    color: #0fa4af;
+    font-weight: bold;  /* new */
+}
+
+.bot-response {
+    text-align: left;
+    margin: 5px;
+    color: #003135;
+    font-style: italic; /* new */
+}
+
+/* Chat Input Section new */
+#chat-input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+    background-color: #f2f2f2;
+    align-items: center;
+}
+
+#chat-input {
+    padding: 10px;
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: white;
+}
+
+/* #chat-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    flex: 1;
+    border: none;
+} */
+
+#chat-send, #voice-command-btn {
+    background-color: #0fa4af;
+    color: white;
+    border: black;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 5px;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
-.chatbot-button button:hover {
-    background-color: var(--primary-color);
+#chat-send:hover, #voice-command-btn:hover {
+    background-color: #003135;
+}
+
+#bot-response-loader {
+    width: 40px;
+    height: 21px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+    background: 
+      var(--_g) 0%   50%,
+      var(--_g) 50%  50%,
+      var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {
+      20%{background-position:0%   0%, 50%  50%,100%  50%}
+      40%{background-position:0% 100%, 50%   0%,100%  50%}
+      60%{background-position:0%  50%, 50% 100%,100%   0%}
+      80%{background-position:0%  50%, 50%  50%,100% 100%}
+  }
+
+
+  #voice-record-loader {
+    width: 45px;
+    height: 21px;
+    aspect-ratio: 1;
+    --c: no-repeat linear-gradient(#000 0 0);
+    background: 
+      var(--c) 0%   50%,
+      var(--c) 50%  50%,
+      var(--c) 100% 50%;
+    background-size: 20% 100%;
+    animation: l1 1s infinite linear;
+  }
+  @keyframes l1 {
+    0%  {background-size: 20% 100%,20% 100%,20% 100%}
+    33% {background-size: 20% 10% ,20% 100%,20% 100%}
+    50% {background-size: 20% 100%,20% 10% ,20% 100%}
+    66% {background-size: 20% 100%,20% 100%,20% 10% }
+    100%{background-size: 20% 100%,20% 100%,20% 100%}
+  }
+  
+#voice-command-btn {
+    margin-top: 5px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+/* #chat-send {
+    background-color: #0fa4af;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+} */
+
+@media (max-width: 768px) {
+    #chat-window {
+        width: 90%;
+        bottom: 70px;
+        right: 5%;
+    }
 }
 
 /* Submit Lesson Page Container */
