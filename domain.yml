@@ -4,89 +4,42 @@ intents:
   - open_page
   - submit_lesson
   - search_lesson
-  - provide_lesson_details
-  - get_recommendations
   - greet
   - goodbye
-  - affirm
-  - deny
-  - fallback
 
 entities:
   - page_name
-  - topic
-  - phase
-  - issue
-  - solution
-  - recommendation
+  - query
 
 slots:
   page_name:
     type: text
     mappings:
-      - type: from_text
+      - type: from_entity
+        entity: page_name
 
-  topic:
-    type: text
-    mappings:
-      - type: from_text
-
-  phase:
-    type: text
-    mappings:
-      - type: from_text
-
-  issue:
-    type: text
-    mappings:
-      - type: from_text
-
-  solution:
-    type: text
-    mappings:
-      - type: from_text
-
-  recommendation:
+  query:
     type: text
     mappings:
       - type: from_text
 
 responses:
+  utter_submit_lesson:
+    - text: "Opening the submit lesson page..."
+  utter_search_lesson:
+    - text: "Searching for the lesson..."
   utter_greet:
-    - text: "Hello! I'm Zoe, how can I assist you today?"
+    - text: "Hello! How can I assist you today?"
   utter_goodbye:
     - text: "Goodbye! Have a great day!"
-  utter_default:
-    - text: "I'm sorry, I didn't understand that. Could you rephrase?"
-  utter_submit_lesson:
-    - text: "Sure! Let's start submitting a lesson. What phase of the project did this occur in?"
-  utter_search_lesson:
-    - text: "Tell me the topic or tags you'd like to search for lessons."
-  utter_ask_phase:
-    - text: "What phase of the project does this lesson relate to?"
-  utter_ask_issue:
-    - text: "What was the issue encountered?"
-  utter_ask_solution:
-    - text: "What was the solution or action taken?"
-  utter_ask_recommendation:
-    - text: "What recommendations would you suggest for future projects?"
-  utter_get_recommendations:
-    - text: "Here are some recommendations based on past lessons: {recommendation}"
 
 actions:
   - action_open_page
-  - action_save_lesson
-  - utter_greet
-  - utter_goodbye
-  - utter_default
-  - utter_submit_lesson
-  - utter_search_lesson
-  - utter_ask_phase
-  - utter_ask_issue
-  - utter_ask_solution
-  - utter_ask_recommendation
-  - utter_get_recommendations
+  - action_search_lesson
+  - action_submit_lesson
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+# forms:
+#   search_lesson:
+#     required_slots:
+#       query:
+#         - type: from_text

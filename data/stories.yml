@@ -1,45 +1,29 @@
 version: "3.1"
 stories:
-
-- story: open a page
+- story: Open a page
   steps:
   - intent: open_page
+  - slot_was_set:
+    - page_name: "homepage"
   - action: action_open_page
 
-- story: submit a lesson
+- story: Submit a lesson
   steps:
   - intent: submit_lesson
-  - action: utter_ask_phase
-  - intent: provide_lesson_details
-  - action: utter_ask_issue
-  - intent: provide_lesson_details
-  - action: utter_ask_solution
-  - intent: provide_lesson_details
-  - action: utter_ask_recommendation
-  - intent: provide_lesson_details
-  - action: action_save_lesson
+  - action: action_open_page
 
-- story: search for lessons
+- story: Search for lessons
   steps:
-    - intent: search_lesson
-    - action: utter_search_lesson
-
-- story: get recommendations
-  steps:
-    - intent: get_recommendations
-    - action: utter_get_recommendations
+  - intent: search_lesson
+  - action: action_search_lesson
+  - action: utter_search_lesson
 
 - story: greet the user
   steps:
-    - intent: greet
-    - action: utter_greet
+  - intent: greet
+  - action: utter_greet
 
 - story: say goodbye
   steps:
-    - intent: goodbye
-    - action: utter_goodbye
-
-- story: fallback
-  steps:
-    - intent: fallback
-    - action: utter_default
+  - intent: goodbye
+  - action: utter_goodbye

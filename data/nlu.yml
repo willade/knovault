@@ -1,103 +1,31 @@
 version: "3.1"
 nlu:
-
 - intent: open_page
   examples: |
-    - Open the homepage
-    - Navigate to the dashboard
-    - Show me the analytics page
-    - Go to the lessons learned page
-    - Take me to the submit lesson form
-    - I want to view the dashboard
-    - Can you open the analytics section?
+    - Open the [homepage](page_name)
     - Navigate to the [dashboard](page_name)
-    - Show me the [analytics page](page_name)
-    - Go to the [lessons learned page](page_name)
-
+    - Show me the [analytics](page_name) page
+    - Go to the [lessons](page_name) page
+    - Can you open the [profile](page_name) section?
+    
 - intent: submit_lesson
   examples: |
     - I want to submit a lesson
     - Add a new lesson
     - Submit project details
-    - Can I record a new lesson?
-    - Start a new lesson entry
-    - I need to add a lesson
 
 - intent: search_lesson
   examples: |
     - Show lessons about resource management
     - Find lessons related to budgeting
     - Search lessons on scope creep
-    - What lessons are available on planning?
-    - Do you have any lessons on execution?
-    - Find lessons tagged with communication
-    - Are there lessons about project delays?
-    - Show lessons about [resource management](topic)
-    - Find lessons related to [budgeting](topic)
-    - Search lessons on [scope creep](topic)
-
-- intent: get_recommendations
-  examples: |
-    - What recommendations do you have for scope creep?
-    - Any tips for resource management during planning?
-    - What should I consider for the execution phase?
-    - Provide some insights for the planning phase.
-    - Any advice for avoiding delays?
-    - How do I handle budget overruns?
-    - What recommendations do you have for [scope creep](topic)?
-    - Any tips for [resource management](topic) during [planning](phase)?
-    - What should I consider for the [execution](phase) phase?
-
-- intent: provide_lesson_details
-  examples: |
-    - The phase was execution
-    - We encountered a budget overrun issue
-    - The solution was to reallocate resources
-    - The recommendation is to define budgets better
-    - It happened during the planning phase
-    - The issue was a lack of communication
-    - The team resolved the issue with better coordination
-    - The phase was [execution](phase)
-    - The issue was [budget overrun](issue)
-    - The solution was to reallocate resources
-    - The recommendation is to [define budgets better](recommendation)
 
 - intent: greet
   examples: |
     - Hi
     - Hello
-    - Hey there
-    - Hi, Zoe!
-    - Good morning
-    - What's up?
 
 - intent: goodbye
   examples: |
     - Bye
     - Goodbye
-    - See you later
-    - Talk to you soon
-    - I’m done for now
-
-- intent: affirm
-  examples: |
-    - Yes
-    - That’s correct
-    - Sure
-    - Absolutely
-    - Definitely
-
-- intent: deny
-  examples: |
-    - No
-    - I don’t think so
-    - Not really
-    - Nope
-    - Nevermind
-
-- intent: fallback
-  examples: |
-    - Can you do something else?
-    - What are you talking about?
-    - I don’t understand
-    - What can you do?

@@ -34,12 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     }
 
-    // send message
+    // Send message
     const sendMessage = (message, isVoiceRecord = false) => {
         if (!message.trim()) return;
+
         if (!isVoiceRecord) chatLog.innerHTML += `<div class="user-message">${message}</div>`;
         chatInput.value = '';
-        chatbotResponseLoader(true)
+
+        chatbotResponseLoader(true);
+
         fetch('/chatbot', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -47,21 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.response) {
-                    chatbotResponseLoader(false)
-                    chatLog.innerHTML += `<div class="bot-response">${data.response}</div>`;
+                chatbotResponseLoader(false);
+
+                // Log data received from the backend    remove
+                console.log('Backend Response:', data);
+
+                if (data.response.text) {
+                    chatLog.innerHTML += `<div class="bot-response">${data.response.text}</div>`;
                 }
-                if (data.action === "navigate" && data.page) {
-                    window.location.href = `/${data.page}`;
+
+                if (data.response.action === "navigate" && data.response.page) {
+                    // Navigate to the specified page
+                    console.log(`Navigating to: /${data.response.page}`); // Log navigation URL
+                    // window.location.href = data.page; // Navigate to the page
+                    window.location.href = `/${data.response.page}`;
                 }
+
+                if (data.response.action === "search" && data.response.query) {
+                    // Populate the search bar and submit the form
+                    const searchInput = document.querySelector('input[name="q"]');
+                    searchInput.value = data.response.query;
+                    searchInput.form.submit();
+                }
+
                 chatLog.scrollTop = chatLog.scrollHeight;
             })
             .catch((error) => {
-                console.log({error})
-                chatbotResponseLoader(false)
+                console.error("Fetch Error:", error);
+                // console.error({ error });
+                chatbotResponseLoader(false);
                 chatLog.innerHTML += `<div class="bot-response">Sorry, something went wrong.</div>`;
             });
     };
+
 
     // Text message handling
     if (chatSend && chatInput) {

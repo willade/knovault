@@ -44,7 +44,9 @@ def chatbot_response():
         )
         rasa_response.raise_for_status() #remove later
         response_data = rasa_response.json()
-        bot_reply = response_data[0]['text'] if response_data else "Sorry, I didn't understand that."
+        print(response_data)
+        # bot_reply = response_data[0]['text'] if response_data else "Sorry, I didn't understand that."
+        bot_reply = response_data[0].get("custom") or  {"text": response_data[0].get("text") or "Sorry, I didn't understand that."}
         return jsonify({'response': bot_reply})
     except requests.exceptions.ConnectionError:  #remove later
         return jsonify({'response': 'Rasa server is not reachable. Please ensure it is running.'}), 503  #remove later
