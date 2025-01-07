@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (data.response.action === "navigate" && data.response.page) {
                     // Navigate to the specified page
-                    console.log(`Navigating to: /${data.response.page}`); // Log navigation URL
-                    window.location.href = `/${data.response.page}`;
+                    console.log(`Navigating to: ${data.response.page}`); // Log navigation URL
+                    window.location.href = `${data.response.page}`;
                 }
                 
 

@@ -16,33 +16,29 @@ class ActionOpenPage(Action):
         page_name = tracker.get_slot('page_name')
         intent = tracker.get_intent_of_latest_message()
 
-        # Debug log
-        print(f"Intent detected: {intent}")
-        print(f"Page slot detected: {page_name}")
-
         # Map intent to default pages if page_name isn't explicitly mentioned
         if not page_name:
-            intent = tracker.get_intent_of_latest_message()
             intent_to_page = {
-                "submit_lesson": "submit",  # Map intent to 'submit' page
+                "submit_lesson": "submit",
                 "search_lesson": "lessons",
-                "open_page": "home"  # Default to home
+                "open_page": "home"
             }
             page_name = intent_to_page.get(intent)
 
-        # Map slot values to web app routes
+        # Normalize page_name for matching
         page_routes = {
             "home": "/",
-            "Profile": "Profile",
-            "submit_lesson": "submit",
-            "lessons": "lessons",
-            "analytics": "analytics"
+            "profile": "/profile",
+            "submit": "/submit",
+            "lessons": "/lessons",
+            "analytics": "/analytics"
         }
 
-        if page_name and page_name.lower() in page_routes:
-            route = page_routes[page_name.lower()]
-            json_payload={"action": "navigate", "page": route, "text": "Opening the {page_name} page..."}
-            dispatcher.utter_message(json_message=json_payload)
+        route = page_routes.get(page_name.lower())
+        print(f"Intent: {intent}, Page Name: {page_name}, Route: {route}")
+
+        if route:
+            dispatcher.utter_message(json_message={"action": "navigate", "page": route, "text": f"Opening the {page_name} page..."})
             return []
 
         dispatcher.utter_message(text="I couldn't find the page you mentioned. Please try again.")
@@ -60,7 +56,7 @@ class ActionSearchLesson(Action):
         keyword = tracker.get_slot('query')  # Assuming "page_name" is used as the search keyword slot
 
         if keyword:
-            dispatcher.utter_message(json_message={"action": "search", "query": keyword, "text": "Searching for {keyword}."})
+            dispatcher.utter_message(json_message={"action": "search", "query": keyword, "text": "Searching........."})
         else:
             dispatcher.utter_message(json_message={"text": "Please provide a keyword to search for lessons."})
 
