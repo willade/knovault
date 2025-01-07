@@ -4,6 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from flask import url_for
 
+
 # 1. Open Page Action
 class ActionOpenPage(Action):
     def name(self) -> Text:
@@ -32,7 +33,7 @@ class ActionOpenPage(Action):
         # Map slot values to web app routes
         page_routes = {
             "home": "/",
-            "dashboard": "dashboard",
+            "Profile": "Profile",
             "submit_lesson": "submit",
             "lessons": "lessons",
             "analytics": "analytics"
@@ -40,15 +41,13 @@ class ActionOpenPage(Action):
 
         if page_name and page_name.lower() in page_routes:
             route = page_routes[page_name.lower()]
-            # dispatcher.utter_message(text=f"Opening the {page_name} page...")
             json_payload={"action": "navigate", "page": route, "text": "Opening the {page_name} page..."}
             dispatcher.utter_message(json_message=json_payload)
-            # dispatcher.utter_message(text="navigate",page_name=route)
-            # dispatcher.utter_message(text=f"Opening the {page_name} page...",json_response=json_payload)
             return []
 
         dispatcher.utter_message(text="I couldn't find the page you mentioned. Please try again.")
         return []
+
 
 # 2. Search Lesson Action
 class ActionSearchLesson(Action):
@@ -67,7 +66,8 @@ class ActionSearchLesson(Action):
 
         return []
 
-# 5. Default Fallback Action
+
+#3. Default Fallback Action
 class ActionFallback(Action):
     def name(self) -> Text:
         return "action_default_fallback"

@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.response.action === "navigate" && data.response.page) {
                     // Navigate to the specified page
                     console.log(`Navigating to: /${data.response.page}`); // Log navigation URL
-                    // window.location.href = data.page; // Navigate to the page
                     window.location.href = `/${data.response.page}`;
                 }
+                
 
                 if (data.response.action === "search" && data.response.query) {
                     // Populate the search bar and submit the form

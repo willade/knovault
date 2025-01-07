@@ -4,7 +4,7 @@ stories:
   steps:
   - intent: open_page
   - slot_was_set:
-    - page_name: "homepage"
+      - page_name: "homepage"
   - action: action_open_page
 
 - story: Submit a lesson
@@ -12,11 +12,13 @@ stories:
   - intent: submit_lesson
   - action: action_open_page
 
-- story: Search for lessons
+- story: search lessons by keyword
   steps:
-  - intent: search_lesson
-  - action: action_search_lesson
-  - action: utter_search_lesson
+    - intent: search_lesson
+    - slot_was_set:
+        - query: "resource management"
+    - action: action_search_lesson
+
 
 - story: greet the user
   steps:

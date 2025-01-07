@@ -16,9 +16,9 @@ nlu:
 
 - intent: search_lesson
   examples: |
-    - Show lessons about resource management
-    - Find lessons related to budgeting
-    - Search lessons on scope creep
+    - Show lessons about [scope creep](query)
+    - Find lessons on [budget](query)
+    - Search lessons about [team management](query)
 
 - intent: greet
   examples: |

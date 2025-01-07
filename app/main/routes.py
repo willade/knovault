@@ -85,13 +85,6 @@ def profile():
     lessons = Lesson.query.filter_by(user_id=current_user.id).all()
     return render_template('profile.html', user=current_user, lessons=lessons, form=form)
 
-    # if request.method == 'POST':
-    #     current_user.username = request.form['username']
-    #     current_user.email = request.form['email']
-    #     db.session.commit()
-    #     flash('Profile updated!')
-    # lessons = Lesson.query.filter_by(user_id=current_user.id).all()
-    # return render_template('profile.html', user=current_user, lessons=lessons)
 
 @main.route('/')
 @login_required
@@ -177,12 +170,6 @@ def view_lessons():
     return render_template('view_lessons.html', lessons=lessons)
 
 
-# @main.route('/analytics')
-# @login_required
-# def analytics():
-#     # Render a template for the analytics page
-#     return render_template('analytics.html')
-
 @main.route('/lesson/<int:lesson_id>', methods=['GET'])
 @login_required
 def view_lesson(lesson_id):
@@ -229,17 +216,6 @@ def search():
         (Lesson.project_description.ilike(f'%{query}%'))
     ).all()
 
-    # Optionally, search in User model
-    # users = User.query.filter(
-    #     (User.username.ilike(f'%{query}%')) |
-    #     (User.full_name.ilike(f'%{query}%')) |
-    #     (User.email.ilike(f'%{query}%'))
-    # ).all()
-
-    # If the user is not an admin, filter lessons further
-    # if not current_user.is_admin:
-    #     lessons = lessons.filter_by(user_id=current_user.id)
-    # return render_template('search_results.html', query=query, lessons=lessons, users=users)
     return render_template('search_results.html', query=query, lessons=lessons)
 
 @main.route('/analytics', methods=['GET'])

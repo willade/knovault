@@ -18,10 +18,12 @@ slots:
       - type: from_entity
         entity: page_name
 
+
   query:
     type: text
     mappings:
-      - type: from_text
+      - type: from_entity
+        entity: query
 
 responses:
   utter_submit_lesson:
@@ -37,9 +39,3 @@ actions:
   - action_open_page
   - action_search_lesson
   - action_submit_lesson
-
-# forms:
-#   search_lesson:
-#     required_slots:
-#       query:
-#         - type: from_text
